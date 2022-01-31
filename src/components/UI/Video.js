@@ -84,7 +84,7 @@ function Loading() {
                 <Skeleton
                     variant="rectangular"
                     height={window.screen.height / 2}
-                    width={window.screen.width / 1.3}
+                    width={window.screen.width / 1.5}
                 />
                 <CardActions>
                     <Grid
@@ -207,7 +207,7 @@ function Video({ videoResult, dispatch }) {
     }
 
     return (
-        <Box mt={15} sx={{ overflowX: 'hidden' }}>
+        <Box mt={15} sx={{ overflowX: 'hidden', minHeight: '100vh' }}>
             {videoResult.loading ? (
                 <Loading />
             ) : videoResult.error ? (

@@ -268,7 +268,7 @@ function Lyrics({ lyricsResult, dispatch }) {
     }
 
     return (
-        <Box mt={15}>
+        <Box mt={15} sx={{ minHeight: '100vh' }}>
             <Container maxWidth="lg">
                 <Grid
                     container
