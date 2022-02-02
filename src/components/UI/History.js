@@ -45,23 +45,16 @@ function Error({ msg }) {
     return <div className={classes.errDiv}>{msg}</div>;
 }
 
-function Searches({ search, keyval }) {
+function Searches({ search }) {
     const classes = useStyles();
+
     return (
-        <Grid item sm="3" md="3" xs="12" key={keyval} className={keyval}>
-            <Card>
-                <CardHeader
-                    avatar={<HistoryIcon />}
-                    title={
-                        <Link
-                            to={`/search?q=${search}`}
-                            className={classes.cardLink}
-                        >
-                            {search}
-                        </Link>
-                    }
-                />
-            </Card>
+        <Grid item sm="3" md="3" xs="12">
+            <Link to={`/search?q=${search}`} className={classes.cardLink}>
+                <Card>
+                    <CardHeader avatar={<HistoryIcon />} title={search} />
+                </Card>
+            </Link>
         </Grid>
     );
 }
@@ -74,7 +67,10 @@ function History({ loggedIn, allSearches, dispatch }) {
         return null;
     }
 
-    useEffect(() => dispatch(fetchSearches()), []);
+    document.documentElement.scrollTop = 0;
+    useEffect(() => {
+        dispatch(fetchSearches());
+    }, []);
 
     let elm;
     if (allSearches.loading) {
@@ -86,8 +82,8 @@ function History({ loggedIn, allSearches, dispatch }) {
     } else {
         elm = (
             <>
-                {allSearches.searches.map((search, index) => (
-                    <Searches search={search} keyval={index.toString()} />
+                {allSearches.searches.map((search) => (
+                    <Searches search={search} />
                 ))}
             </>
         );
