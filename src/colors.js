@@ -43,7 +43,8 @@ const colors = {
     },
     whiteColor: '#fff',
     greyWhite: '#C4C4C4',
-    searchColor: '#909090'
+    searchColor: '#909090',
+    transparent: 'rgba(0,0,0,0)'
 };
 
 export default colors;
