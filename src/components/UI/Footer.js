@@ -140,7 +140,7 @@ function Footer({ currentAudio }) {
                             className={classes.link}
                             variant="subtitle1"
                         >
-                            Sitemap
+                            All Rights Reserved
                         </Typography>
                     </Grid>
                 </Grid>
