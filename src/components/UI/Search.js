@@ -163,8 +163,11 @@ function Search({ searchResults, dispatch }) {
         });
     }
 
+    document.documentElement.scrollTop = 0;
     if (query) {
-        useEffect(() => dispatch(fetchResult(query)), []);
+        useEffect(() => {
+            dispatch(fetchResult(query));
+        }, []);
     } else {
         useEffect(() => navigate('/'), []);
     }
