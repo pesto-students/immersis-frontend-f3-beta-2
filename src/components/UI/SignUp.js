@@ -110,9 +110,16 @@ function SignUp({ loggedIn, dispatch }) {
 
     const baseURL = 'https://api-immersis.herokuapp.com';
     const onSubmit = (data) => {
+        if (data.password !== data.confirmPassword) {
+            setMessage("Password didn't match");
+            setOpen(true);
+            return;
+        }
+        const toSend = { ...data };
+        delete toSend.confirmPassword;
         setloading(true);
         axios
-            .post(`${baseURL}/auth`, data)
+            .post(`${baseURL}/auth`, toSend)
             .then((res) => {
                 const Response = res.data;
                 setloading(false);

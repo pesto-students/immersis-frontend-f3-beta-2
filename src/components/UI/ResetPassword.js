@@ -86,6 +86,7 @@ function ResetPassword({ loggedIn, reset, dispatch }) {
     const classes = useStyles();
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
+    const [message, setMessage] = React.useState('');
     const { register, handleSubmit, errors } = useForm();
     const [params] = useSearchParams();
     const expiry = params.get('expiry');
@@ -126,7 +127,14 @@ function ResetPassword({ loggedIn, reset, dispatch }) {
     );
 
     const submitReset = (data) => {
-        dispatch(Reset({ ...data, token }));
+        if (data.password !== data.confirmPassword) {
+            setMessage("Password didn't match");
+            setOpen(true);
+            return;
+        }
+        const toSend = { ...data };
+        delete toSend.confirmPassword;
+        dispatch(Reset({ ...toSend, token }));
         setOpen(true);
     };
 
@@ -238,12 +246,12 @@ function ResetPassword({ loggedIn, reset, dispatch }) {
                             </form>
                         </Paper>
                     </Grid>
-                    {reset.msg || reset.error ? (
+                    {reset.msg || reset.error || message ? (
                         <Snackbar
                             open={open}
                             autoHideDuration={3000}
                             onClose={handleClose}
-                            message={reset.msg || reset.error}
+                            message={reset.msg || reset.error || message}
                             action={action}
                             severity="success"
                             anchorOrigin={{
