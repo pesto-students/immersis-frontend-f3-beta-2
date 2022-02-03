@@ -116,25 +116,37 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     bar: {
-        border: `2px solid ${colors.searchColor}`,
+        border: `2px solid ${colors.primaryColor}`,
+        borderRight: 'none',
         width: '50%',
-        padding: '0 2%'
+        padding: '2px 4%',
+        paddingRight: 0,
+        [theme.breakpoints.down('sm')]: {
+            width: '60%'
+        }
     },
     searchForm: {
         width: '50vw',
         marginLeft: '20%',
         [theme.breakpoints.down('sm')]: {
-            marginLeft: '10%'
+            marginLeft: '10%',
+            width: '55vw'
         }
     },
     iconSubmit: {
-        backgroundColor: 'hsl(11deg 80% 45%)',
-        color: '#fff',
+        border: `2px solid ${colors.primaryColor}`,
+        borderLeft: 'none',
+        color: colors.primaryColor,
         borderRadius: 0,
         '&:hover': {
-            backgroundColor: 'hsl(11deg 80% 45%)',
-            color: '#fff',
+            border: `2px solid ${colors.primaryColor}`,
+            borderLeft: 'none',
+            color: colors.primaryColor,
             borderRadius: 0
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: 0,
+            paddingRight: 0
         }
     }
 }));
