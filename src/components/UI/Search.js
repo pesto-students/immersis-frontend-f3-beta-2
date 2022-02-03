@@ -169,7 +169,7 @@ function Search({ searchResults, dispatch }) {
         useEffect(() => navigate('/'), []);
     }
     return (
-        <Box mt={15} mb={30}>
+        <Box mt={15} sx={{ minHeight: '100vh' }}>
             <Container maxWidth="lg">
                 <Grid container>
                     <Box mb={5}>

@@ -6,6 +6,7 @@ import {
     CardHeader,
     makeStyles
 } from '@material-ui/core';
+import HistoryIcon from '@mui/icons-material/History';
 import React, { useEffect } from 'react';
 import { Skeleton } from '@mui/material';
 import { connect } from 'react-redux';
@@ -14,7 +15,7 @@ import { fetchSearches } from '../../utils/resource';
 
 const useStyles = makeStyles(() => ({
     cardBack: {
-        backgroundColor: '#89909c'
+        padding: '5%'
     },
     cardLink: {
         textDecoration: 'none'
@@ -44,15 +45,23 @@ function Error({ msg }) {
     return <div className={classes.errDiv}>{msg}</div>;
 }
 
-function Searches({ search }) {
+function Searches({ search, keyval }) {
     const classes = useStyles();
     return (
-        <Grid item sm="3" md="3" xs="12">
-            <Link to={`/search?q=${search}`} className={classes.cardLink}>
-                <Card className={classes.cardBack}>
-                    <CardHeader title={search} />
-                </Card>
-            </Link>
+        <Grid item sm="3" md="3" xs="12" key={keyval} className={keyval}>
+            <Card>
+                <CardHeader
+                    avatar={<HistoryIcon />}
+                    title={
+                        <Link
+                            to={`/search?q=${search}`}
+                            className={classes.cardLink}
+                        >
+                            {search}
+                        </Link>
+                    }
+                />
+            </Card>
         </Grid>
     );
 }
@@ -77,15 +86,15 @@ function History({ loggedIn, allSearches, dispatch }) {
     } else {
         elm = (
             <>
-                {allSearches.searches.map((search) => (
-                    <Searches search={search} />
+                {allSearches.searches.map((search, index) => (
+                    <Searches search={search} keyval={index.toString()} />
                 ))}
             </>
         );
     }
 
     return (
-        <Box mt={15} mb={30}>
+        <Box mt={15} sx={{ minHeight: '100vh' }}>
             <Container maxWidth="lg">
                 <Grid container spacing={4}>
                     {elm}
