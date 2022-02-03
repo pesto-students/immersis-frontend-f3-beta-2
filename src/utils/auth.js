@@ -10,8 +10,10 @@ const IsLoggedIn = () => {
         };
         try {
             const resp = await axios(options);
-            document.cookie = resp.headers['set-cookie'];
-            dispatch({ type: resp.data ? 'LOG_IN' : 'LOG_OUT' });
+            if (resp.data.csrfToken) {
+                document.cookie = `csrfToken=${resp.data.csrfToken}`;
+            }
+            dispatch({ type: resp.data.status ? 'LOG_IN' : 'LOG_OUT' });
         } catch (err) {
             console.log(err.message);
         }
