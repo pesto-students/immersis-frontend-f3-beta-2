@@ -15,6 +15,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CopyAllIcon from '@mui/icons-material/CopyAll';
 import CloseIcon from '@mui/icons-material/Close';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import SwitchVideoTwoToneIcon from '@mui/icons-material/SwitchVideoTwoTone';
 import { CardHeader, Skeleton, Typography } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -61,7 +62,9 @@ function Loading() {
                 >
                     <div className={classes.linkDiv}>
                         <ArrowBackIcon />
-                        <Typography sx={{ display: 'inline-block' }}>
+                        <Typography
+                            sx={{ display: 'inline-block', marginTop: '5px' }}
+                        >
                             Back to Search Results
                         </Typography>
                     </div>
@@ -136,7 +139,9 @@ function SongLyrics({
                 >
                     <div className={classes.linkDiv}>
                         <ArrowBackIcon />
-                        <Typography sx={{ display: 'inline-block' }}>
+                        <Typography
+                            sx={{ display: 'inline-block', marginTop: '5px' }}
+                        >
                             Back to Search Results
                         </Typography>
                     </div>
@@ -151,9 +156,14 @@ function SongLyrics({
                             </Avatar>
                         }
                         action={
-                            <IconButton onClick={copyLyrics}>
-                                <CopyAllIcon />
-                            </IconButton>
+                            <>
+                                <IconButton onClick={copyLyrics}>
+                                    <CopyAllIcon />
+                                </IconButton>
+                                <IconButton onClick={() => window.print()}>
+                                    <LocalPrintshopIcon />
+                                </IconButton>
+                            </>
                         }
                         title={titleName}
                         subheader={artist}
@@ -170,6 +180,7 @@ function SongLyrics({
                             fontSize: '10rem',
                             textAlign: 'center'
                         }}
+                        id="sectionPrint"
                     >
                         <Typography
                             gutterBottom
@@ -258,11 +269,11 @@ function Lyrics({ lyricsResult, dispatch }) {
         </IconButton>
     );
 
+    document.documentElement.scrollTop = 0;
     if (titleName && artist) {
-        useEffect(
-            () => dispatch(fetchLyrics({ title: titleName, artist })),
-            []
-        );
+        useEffect(() => {
+            dispatch(fetchLyrics({ title: titleName, artist }));
+        }, []);
     } else {
         useEffect(() => navigate('/'), []);
     }

@@ -68,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     HistoryButton: {
         color: colors.secondaryColor,
         fontSize: '1.1rem',
+        '&:hover': {
+            backgroundColor: colors.transparent
+        },
         [theme.breakpoints.down('sm')]: {
             fontSize: '1rem'
         }
@@ -75,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
     LogoutButton: {
         color: colors.secondaryColor,
         fontSize: '1.1rem',
+        '&:hover': {
+            backgroundColor: colors.transparent
+        },
         [theme.breakpoints.down('sm')]: {
             fontSize: '1rem'
         }
@@ -268,11 +274,8 @@ function Navbar({ loggedIn, dispatch }) {
                                 onClose={handleClose}
                                 TransitionComponent={Fade}
                             >
-                                <MenuItem onClick={handleClose}>
-                                    <Link
-                                        to="/history"
-                                        className={classes.Link}
-                                    >
+                                <Link to="/history" className={classes.Link}>
+                                    <MenuItem onClick={handleClose}>
                                         <Button
                                             size="medium"
                                             variant="text"
@@ -280,11 +283,11 @@ function Navbar({ loggedIn, dispatch }) {
                                         >
                                             History
                                         </Button>
-                                    </Link>
-                                </MenuItem>
+                                    </MenuItem>
+                                </Link>
 
-                                <MenuItem onClick={logOut}>
-                                    <Link to="/login" className={classes.Link}>
+                                <Link to="/login" className={classes.Link}>
+                                    <MenuItem onClick={logOut}>
                                         <Button
                                             size="medium"
                                             variant="text"
@@ -292,8 +295,8 @@ function Navbar({ loggedIn, dispatch }) {
                                         >
                                             Log out
                                         </Button>
-                                    </Link>
-                                </MenuItem>
+                                    </MenuItem>
+                                </Link>
                             </Menu>
                         </>
                     ) : (

@@ -72,7 +72,9 @@ function Loading() {
                 >
                     <div className={classes.linkDiv}>
                         <ArrowBackIcon />
-                        <Typography sx={{ display: 'inline-block' }}>
+                        <Typography
+                            sx={{ display: 'inline-block', marginTop: '5px' }}
+                        >
                             Back to Search Results
                         </Typography>
                     </div>
@@ -130,7 +132,9 @@ function VideoFrame({ videoId, artist, trig, audioTrigger, titleName = '' }) {
                 >
                     <div className={classes.linkDiv}>
                         <ArrowBackIcon />
-                        <Typography sx={{ display: 'inline-block' }}>
+                        <Typography
+                            sx={{ display: 'inline-block', marginTop: '5px' }}
+                        >
                             Back to Search Results
                         </Typography>
                     </div>
@@ -200,8 +204,11 @@ function Video({ videoResult, dispatch }) {
         });
     }
 
+    document.documentElement.scrollTop = 0;
     if (titleName && artist) {
-        useEffect(() => dispatch(fetchVideo(`${titleName} ${artist}`)), []);
+        useEffect(() => {
+            dispatch(fetchVideo(`${titleName} ${artist}`));
+        }, []);
     } else {
         useEffect(() => navigate('/'), []);
     }

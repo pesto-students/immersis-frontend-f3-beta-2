@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { createTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import axios from 'axios';
@@ -20,6 +20,9 @@ import TermsCondition from './components/UI/TermsCondition';
 import Video from './components/UI/Video';
 
 axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-XSRF-TOKEN';
+axios.defaults.xsrfCookieName = 'csrfToken';
+
 function App() {
     const font = "'Baloo Bhaijaan 2', cursive;";
     const theme = createTheme({

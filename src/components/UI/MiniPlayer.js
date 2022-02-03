@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Card, CardHeader, Skeleton } from '@mui/material';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import Paper from '@mui/material/Paper';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactPlayer from 'react-player/soundcloud';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -105,7 +105,7 @@ function Error({ msg }) {
     );
 }
 
-function MinPLayer({ currentAudio }) {
+function MinPLayer({ currentAudio, dispatch }) {
     const location = useLocation();
     let elm;
 
@@ -123,6 +123,14 @@ function MinPLayer({ currentAudio }) {
     } else if (currentAudio.error) {
         console.log(currentAudio);
         elm = <Error msg={currentAudio.error} />;
+        useEffect(() => {
+            const timer = setTimeout(() => {
+                dispatch({ type: 'FETCH_AUDIO_ERROR', payload: '' });
+            }, 3000);
+            return () => {
+                clearTimeout(timer);
+            };
+        });
     } else if (currentAudio.url) {
         elm = <Audio url={currentAudio.url} />;
     } else {
