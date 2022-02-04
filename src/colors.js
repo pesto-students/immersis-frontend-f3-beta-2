@@ -44,7 +44,8 @@ const colors = {
     whiteColor: '#fff',
     greyWhite: '#C4C4C4',
     searchColor: '#909090',
-    transparent: 'rgba(0,0,0,0)'
+    transparent: 'rgba(0,0,0,0)',
+    dimPermanent: 'rgba(253, 24, 99, 0.5)'
 };
 
 export default colors;

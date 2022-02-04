@@ -122,7 +122,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     bar: {
-        border: `2px solid ${colors.primaryColor}`,
+        border: `2px solid ${colors.dimPermanent}`,
         borderRight: 'none',
         width: '50%',
         padding: '2px 4%',
@@ -140,12 +140,12 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     iconSubmit: {
-        border: `2px solid ${colors.primaryColor}`,
+        border: `2px solid ${colors.dimPermanent}`,
         borderLeft: 'none',
         color: colors.primaryColor,
         borderRadius: 0,
         '&:hover': {
-            border: `2px solid ${colors.primaryColor}`,
+            border: `2px solid ${colors.dimPermanent}`,
             borderLeft: 'none',
             color: colors.primaryColor,
             borderRadius: 0
