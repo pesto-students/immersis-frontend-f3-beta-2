@@ -75,6 +75,5 @@
             "eslint --fix",
             "prettier --write"
         ]
-    },
-    "proxy": "https://api-immersis.herokuapp.com"
+    }
 }

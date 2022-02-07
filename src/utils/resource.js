@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = '';
+const baseURL = 'https://api-immersis.herokuapp.com';
 
 const fetchResult = (query) => {
     return async (dispatch) => {

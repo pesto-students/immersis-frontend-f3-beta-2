@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = '';
+const baseURL = 'https://api-immersis.herokuapp.com';
 
 const IsLoggedIn = () => {
     return async (dispatch) => {
@@ -10,6 +10,9 @@ const IsLoggedIn = () => {
         };
         try {
             const resp = await axios(options);
+            if (resp.data.csrfToken) {
+                document.cookie = `csrfToken=${resp.data.csrfToken}`;
+            }
             dispatch({ type: resp.data.status ? 'LOG_IN' : 'LOG_OUT' });
         } catch (err) {
             console.log(err.message);
@@ -23,6 +26,8 @@ const LogOut = () => {
             url: `${baseURL}/auth/logout`,
             method: 'GET'
         });
+        document.cookie =
+            'token=; secure=true; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         dispatch({ type: 'LOG_OUT' });
     };
 };
