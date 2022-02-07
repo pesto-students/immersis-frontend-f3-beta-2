@@ -7,7 +7,7 @@ import {
     makeStyles
 } from '@material-ui/core';
 import HistoryIcon from '@mui/icons-material/History';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { Skeleton } from '@mui/material';
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -62,10 +62,11 @@ function Searches({ search }) {
 function History({ loggedIn, allSearches, dispatch }) {
     const navigate = useNavigate();
 
-    if (!loggedIn) {
-        navigate('/');
-        return null;
-    }
+    useLayoutEffect(() => {
+        if (!loggedIn) {
+            navigate('/');
+        }
+    }, []);
 
     document.documentElement.scrollTop = 0;
     useEffect(() => {
