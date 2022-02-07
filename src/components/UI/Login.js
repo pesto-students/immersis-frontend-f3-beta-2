@@ -95,7 +95,7 @@ function Login({ loggedIn, dispatch }) {
     const navigate = useNavigate();
     const { register, handleSubmit, errors } = useForm();
     const [open, setOpen] = React.useState(false);
-    const baseURL = '';
+    const baseURL = 'https://api-immersis.herokuapp.com';
     const [message, setmessage] = React.useState('');
     const [loading, setloading] = React.useState(false);
 
@@ -130,6 +130,7 @@ function Login({ loggedIn, dispatch }) {
                 const Response = res.data;
                 setloading(false);
                 if (Response.success) {
+                    document.cookie = `token=${Response.token}; secure=true`;
                     setmessage(Response.message);
                     setOpen(true);
                     dispatch({ type: 'LOG_IN' });
