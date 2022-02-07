@@ -108,7 +108,7 @@ function SignUp({ loggedIn, dispatch }) {
         </IconButton>
     );
 
-    const baseURL = 'https://api-immersis.herokuapp.com';
+    const baseURL = '';
     const onSubmit = (data) => {
         if (data.password !== data.confirmPassword) {
             setMessage("Password didn't match");
@@ -124,7 +124,6 @@ function SignUp({ loggedIn, dispatch }) {
                 const Response = res.data;
                 setloading(false);
                 if (Response.success) {
-                    document.cookie = `token=${Response.token}; secure=true`;
                     dispatch({ type: 'LOG_IN' });
                     setMessage(Response.message);
                     setOpen(true);
