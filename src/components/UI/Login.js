@@ -87,6 +87,10 @@ const useStyles = makeStyles((theme) => ({
     LinkSignUp: {
         color: colors.primaryColor,
         textDecoration: 'none !important'
+    },
+    infoDiv: {
+        border: 'solid 2px orange',
+        textAlign: 'center'
     }
 }));
 
@@ -268,6 +272,15 @@ function Login({ loggedIn, dispatch }) {
                                     </Link>
                                 </Typography>
                             </form>
+                            <div className={classes.infoDiv}>
+                                <Typography variant="h6">
+                                    To login as a test user use:
+                                </Typography>
+                                <Typography>
+                                    Email: testuser@gmail.com
+                                </Typography>
+                                <Typography>Password: test12345678</Typography>
+                            </div>
                         </Paper>
                     </Grid>
                     <Snackbar
