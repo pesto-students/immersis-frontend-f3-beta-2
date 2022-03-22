@@ -1,6 +1,4 @@
-<p align="center">
-    ![](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/images/Logo.png)
-</p>
+![](https://github.com/pesto-students/immersis-frontend-f3-beta-2/blob/readme/images/Logo.png)
 
 Immersis is a one stop platform for Audiophiles out there. It's a streaming platform that provides audio, lyrics and music video all at one place. Use the search bar that is present across most of the pages to find your favourite songs and listen to it or watch it or go through the lyrics or do it all together. We got you covered.
 
