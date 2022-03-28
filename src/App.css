@@ -1,0 +1,15 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #sectionPrint,
+    #sectionPrint * {
+        visibility: visible;
+    }
+    #sectionPrint {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
