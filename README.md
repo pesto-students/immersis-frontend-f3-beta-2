@@ -62,9 +62,9 @@ Test Credentials:
 
 -   [Redux](https://redux.js.org/)
 
--   [Node.js](https://nodejs.org/en/)
+-   [Axios](https://axios-http.com/)
 
--   [MongoDB](https://www.mongodb.com/)
+-   [Material UI](https://mui.com/)
 
 # **Authors**
 
